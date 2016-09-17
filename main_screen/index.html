@@ -28,6 +28,10 @@
 		</section>
 
 		<!-- Scripts -->
+		<script type="text/javascript" src="/assets/js/sha1.js"></script>
+		<script type="text/javascript" src="/assets/js/oauth.js"></script>
+		<script type="text/javascript" src="/assets/js/seek.js"></script>
+
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
@@ -40,20 +44,8 @@
 		<script type='text/javascript' src="http://wolframhempel.github.io/photobooth-js/photobooth_min.js"></script>
 
 		<script>
-			var message = {
-				'action': 'http://api.yelp.com/v2/search',
-				'method': 'GET',
-				'parameters': parameters
-			};
+			// Yelp code
 
-			$.ajax({
-				type: "POST",
-				url: message.action,
-				data: data,
-				success: function()[
-
-				]
-			});
 
 			// $(document).ready(function() {
 			// 	var file = null;
