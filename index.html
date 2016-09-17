@@ -62,133 +62,129 @@
         <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
         <script src="assets/js/main.js"></script>
 
-        <<<<<<< Updated upstream <!-- Yelp API -->
-            <script type="text/javascript">
-            </script>
-            =======
-            <!-- Ajax API -->
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    //feed to parse
-                    var feed = "http://rss.cnn.com/rss/cnn_topstories.rss?format=xml";
+        <!-- Ajax API -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                //feed to parse
+                var feed = "http://rss.cnn.com/rss/cnn_topstories.rss?format=xml";
 
-                    $.ajax(feed, {
-                        accepts: {
-                            xml: "application/rss+xml"
-                        },
-                        dataType: "xml",
-                        success: function(data) {
-                            //Credit: http://stackoverflow.com/questions/10943544/how-to-parse-an-rss-feed-using-javascript
+                $.ajax(feed, {
+                    accepts: {
+                        xml: "application/rss+xml"
+                    },
+                    dataType: "xml",
+                    success: function(data) {
+                        //Credit: http://stackoverflow.com/questions/10943544/how-to-parse-an-rss-feed-using-javascript
 
-                            $(data).find("item").each(function() { // or "item" or whatever suits your feed
-                                var el = $(this);
-                                console.log("------------------------");
-                                console.log("title      : " + el.find("title").text());
-                                console.log("link       : " + el.find("link").text());
-                                console.log("description: " + el.find("description").text());
-                            });
+                        $(data).find("item").each(function() { // or "item" or whatever suits your feed
+                            var el = $(this);
+                            console.log("------------------------");
+                            console.log("title      : " + el.find("title").text());
+                            console.log("link       : " + el.find("link").text());
+                            console.log("description: " + el.find("description").text());
+                        });
 
 
-                        }
-                    });
-
-                });
-            </script>
-            >>>>>>> Stashed changes
-            <!-- annyang -->
-            <script>
-                if (annyang) {
-                    // Let's define our first command. First the text we expect, and then the function it should call
-                    var commands = {
-                        'activate': function() {
-                            console.log("hello");
-                        }
-                    };
-
-                    // Add our commands to annyang
-                    annyang.addCommands(commands);
-
-                    // Start listening. You can call this here, or attach this call to an event, button, etc.
-                    annyang.start();
-                }
-            </script>
-            <script>
-                //Weather widget
-                $(document).ready(function() {
-                    $.simpleWeather({
-                        location: 'Waterloo, ON',
-                        woeid: '',
-                        unit: 'c',
-                        success: function(weather) {
-                            $("#weather > p:eq(0)").append(weather.currently + "<br>" + weather.city + "<br>" + weather.temp + "&#8451;");
-                            console.log(weather.currently);
-                            console.log(weather.city);
-                            console.log(weather.image);
-
-                        },
-                        error: function(error) {
-                            // $("#weather").html('<p>'+error+'</p>');
-                        }
-                    });
+                    }
                 });
 
-                // Clock widget
-                function startTime() {
-                    var today = new Date();
-                    var h = today.getHours();
-                    var m = today.getMinutes();
-                    var s = today.getSeconds();
-                    // add a zero in front of numbers greater than 10
-                    var myDate = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
-
-                    document.getElementById('time').innerHTML = myDate;
-                    setTimeout(startTime, 500);
-                }
-
-                function checkTime(i) {
-                    if (i < 10) {
-                        i = "0" + i;
+            });
+        </script>
+        >>>>>>> Stashed changes
+        <!-- annyang -->
+        <script>
+            if (annyang) {
+                // Let's define our first command. First the text we expect, and then the function it should call
+                var commands = {
+                    'activate': function() {
+                        console.log("hello");
                     }
-                    return i;
-                }
+                };
 
-                function convertHourToName(num) {
-                    if (num > 12) {
-                        num -= 12;
+                // Add our commands to annyang
+                annyang.addCommands(commands);
+
+                // Start listening. You can call this here, or attach this call to an event, button, etc.
+                annyang.start();
+            }
+        </script>
+        <script>
+            //Weather widget
+            $(document).ready(function() {
+                $.simpleWeather({
+                    location: 'Waterloo, ON',
+                    woeid: '',
+                    unit: 'c',
+                    success: function(weather) {
+                        $("#weather > p:eq(0)").append(weather.currently + "<br>" + weather.city + "<br>" + weather.temp + "&#8451;");
+                        console.log(weather.currently);
+                        console.log(weather.city);
+                        console.log(weather.image);
+
+                    },
+                    error: function(error) {
+                        // $("#weather").html('<p>'+error+'</p>');
                     }
-                    return convertNumberToName(num);
-                }
+                });
+            });
 
-                function convertNumberToName(num) {
-                    var lowNames = ["zero", "one", "two", "three",
-                        "four", "five", "six", "seven", "eight", "nine",
-                        "ten", "eleven", "twelve", "thirteen", "fourteen",
-                        "fifteen", "sixteen", "seventeen",
-                        "eighteen", "nineteen"
-                    ];
-                    var tensNames = ["twenty", "thirty", "forty", "fifty",
-                        "sixty", "seventy", "eighty", "ninety"
-                    ];
-                    var tens, ones, result;
-                    if (num < lowNames.length) {
-                        result = lowNames[num];
+            // Clock widget
+            function startTime() {
+                var today = new Date();
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                // add a zero in front of numbers greater than 10
+                var myDate = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+
+                document.getElementById('time').innerHTML = myDate;
+                setTimeout(startTime, 500);
+            }
+
+            function checkTime(i) {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+
+            function convertHourToName(num) {
+                if (num > 12) {
+                    num -= 12;
+                }
+                return convertNumberToName(num);
+            }
+
+            function convertNumberToName(num) {
+                var lowNames = ["zero", "one", "two", "three",
+                    "four", "five", "six", "seven", "eight", "nine",
+                    "ten", "eleven", "twelve", "thirteen", "fourteen",
+                    "fifteen", "sixteen", "seventeen",
+                    "eighteen", "nineteen"
+                ];
+                var tensNames = ["twenty", "thirty", "forty", "fifty",
+                    "sixty", "seventy", "eighty", "ninety"
+                ];
+                var tens, ones, result;
+                if (num < lowNames.length) {
+                    result = lowNames[num];
+                } else {
+                    tens = Math.floor(num / 10);
+                    ones = num % 10;
+                    if (tens <= 9) {
+                        result = tensNames[tens - 2];
+                        if (ones > 0) {
+                            result += " " + lowNames[ones];
+                        }
                     } else {
-                        tens = Math.floor(num / 10);
-                        ones = num % 10;
-                        if (tens <= 9) {
-                            result = tensNames[tens - 2];
-                            if (ones > 0) {
-                                result += " " + lowNames[ones];
-                            }
-                        } else {
-                            result = "unknown"
-                        }
+                        result = "unknown"
                     }
-                    return result;
                 }
+                return result;
+            }
 
-                startTime();
-            </script>
+            startTime();
+        </script>
 
 </body>
 
