@@ -385,6 +385,9 @@
 	#weather img{
 		color: #fff;
 	}
+	#weather{
+		display: inline-block;
+	}
 
 .hr-no-padding-top{
 	margin-top: -15px;
