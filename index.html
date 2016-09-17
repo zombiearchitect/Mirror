@@ -53,22 +53,22 @@
 		<script>
 			//Weather widget
 			$(document).ready(function() {
-  				$.simpleWeather({
-    			location: 'Waterloo, ON',
-    			woeid: '',
-    			unit: 'c',
-    			success: function(weather) {
-    			$("#weather > p:eq(0)").append(weather.currently + "<br>" + weather.city + "<br>" + weather.temp + "&#8451;");
-    			console.log(weather.currently);
-    			console.log(weather.city);
-    			console.log(weather.image);
-      			
-			},
-    			error: function(error) {
-      				// $("#weather").html('<p>'+error+'</p>');
-    			}
-  			});
-		});
+				$.simpleWeather({
+					location: 'Waterloo, ON',
+					woeid: '',
+					unit: 'c',
+					success: function(weather) {
+						$("#weather > p:eq(0)").append(weather.currently + "<br>" + weather.city + "<br>" + weather.temp + "&#8451;");
+						console.log(weather.currently);
+						console.log(weather.city);
+						console.log(weather.image);
+
+					},
+					error: function(error) {
+						// $("#weather").html('<p>'+error+'</p>');
+					}
+				});
+			});
 
 			// Clock widget
 			function startTime() {
