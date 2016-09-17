@@ -21,8 +21,20 @@
 
 		<!-- Banner -->
 		<section id="banner" class="major">
+		<header class="major">
+                    <h1>Hi, I'm Mirror.</h1>
+                </header>
 			<div class="inner">
-				<div style="height:600px; weight:200px" id="photo">
+				<div class="content row" style="height:600px; weight:200px;" id="photo">
+				</div>
+				<div class="content row">
+					<div class="col-md-6" id="food-place">
+						
+                        <p></p>
+					</div>
+					<div class="col-md-6">
+						<button onclick="hide()">Hello</button>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -44,23 +56,29 @@
 		<script type='text/javascript' src="http://wolframhempel.github.io/photobooth-js/photobooth_min.js"></script>
 
 		<script>
-			// Yelp code
 
-			// Using YQL and JSONP
+		var data;
+			function hide(){
+				$("#photo").hide();
+			}
+
 			$.ajax({
 				url: "https://yelpserver.herokuapp.com/food",
 
-				// The name of the callback parameter, as specified by the YQL service
-				jsonp: "callback",
-
 				// Tell jQuery we're expecting JSONP
-				dataType: "jsonp",
+				dataType: "json",
 
 				// Work with the response
 				success: function(response) {
-					console.log(response); // server response
+					data = JSON.parse(response);
 				}
 			});
+
+			function display(){
+
+			}
+
+			// $('#food-place > p:eq(0)').append("hello");
 
 			// $(document).ready(function() {
 			// 	var file = null;
@@ -72,23 +90,23 @@
 			// 		$("#gallery").append('<img src="' + dataUrl + '" >');
 			// 	});
 			// });
-			//
+			
 			// function dataURLtoBlob(dataUrl) {
 			// 	// Decode the dataURL
 			// 	var binary = atob(dataUrl.split(',')[1]);
-			//
+			
 			// 	// Create 8-bit unsigned array
 			// 	var array = [];
 			// 	for (var i = 0; i < binary.length; i++) {
 			// 		array.push(binary.charCodeAt(i));
 			// 	}
-			//
+			
 			// 	// Return our Blob object
 			// 	return new Blob([new Uint8Array(array)], {
 			// 		type: 'image/png'
 			// 	});
 			// }
-			//
+			
 			// function uploadImage(file) {
 			// 	var fd = new FormData();
 			// 	// Append our Canvas image file to the form data
@@ -116,7 +134,7 @@
 </body>
 
 </html>
-ultObject = JSON.stringify(result); // alert(resultObject); // }); // }
+<!-- ultObject = JSON.stringify(result); // alert(resultObject); // }); // } -->
 </script>
 
 </body>
