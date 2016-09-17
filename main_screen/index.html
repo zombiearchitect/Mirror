@@ -40,12 +40,19 @@
 		<script type='text/javascript' src="http://wolframhempel.github.io/photobooth-js/photobooth_min.js"></script>
 
 		<script>
+			var message = {
+				'action': 'http://api.yelp.com/v2/search',
+				'method': 'GET',
+				'parameters': parameters
+			};
+
 			$.ajax({
 				type: "POST",
-				url: url,
+				url: message.action,
 				data: data,
-				success: success,
-				dataType: dataType
+				success: function()[
+
+				]
 			});
 
 			// $(document).ready(function() {
