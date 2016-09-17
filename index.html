@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -24,9 +26,14 @@
 					<h1>Hi, I'm Mirror.</h1>
 				</header>
 				<div class="content">
-					<p id="output">We'd like to know a bit about you.
+					<p id="output" style="font-size: 20px;">We'd like to know a bit about you.
 					</p>
-					<p id="time"></p>
+				</div>
+				<div class="content">
+					<p id="time" style="font-size: 40px;"></p>
+				</div>
+				<div class="content" id="weather" style="font-size: 30px;">
+					<p></p>
 				</div>
 			</div>
 		</section>
@@ -34,6 +41,7 @@
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
 		<script src="assets/js/jquery.scrollex.min.js"></script>
 		<script src="assets/js/skel.min.js"></script>
@@ -42,15 +50,38 @@
 		<script src="assets/js/main.js"></script>
 
 		<script>
+			//Weather widget
+			$(document).ready(function() {
+  				$.simpleWeather({
+    			location: 'Waterloo, ON',
+    			woeid: '',
+    			unit: 'c',
+    			success: function(weather) {
+    			$("#weather > p:eq(0)").append(weather.currently + "<br>" + weather.city + "<br>" + weather.temp + "&#8451;");
+    			console.log(weather.currently);
+    			console.log(weather.city);
+    			console.log(weather.image);
+      			
+			},
+    			error: function(error) {
+      				// $("#weather").html('<p>'+error+'</p>');
+    			}
+  			});
+		});
+
 			// Clock widget
 			function startTime() {
 				var today = new Date();
 				var h = today.getHours();
 				var m = today.getMinutes();
+				var s = today.getSeconds();
 				// add a zero in front of numbers greater than 10
-				document.getElementById('time').innerHTML = "The time is " + convertHourToName(h) + " o'clock and " + convertNumberToName(m) + " past";
+				var myDate = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+
+				document.getElementById('time').innerHTML = myDate;
 				setTimeout(startTime, 500);
 			}
+
 
 			function checkTime(i) {
 				if (i < 10) {
