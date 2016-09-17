@@ -24,7 +24,9 @@
 					<h1>Hi, I'm Mirror.</h1>
 				</header>
 				<div class="content">
-					<p id="output">We'd like to know a bit about you.</p>
+					<p id="output">We'd like to know a bit about you.
+					</p>
+					<p id="time"></p>
 				</div>
 			</div>
 		</section>
@@ -38,6 +40,62 @@
 		<script src="assets/js/util.js"></script>
 		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 		<script src="assets/js/main.js"></script>
+
+		<script>
+			// Clock widget
+			function startTime() {
+				var today = new Date();
+				var h = today.getHours();
+				var m = today.getMinutes();
+				// add a zero in front of numbers greater than 10
+				document.getElementById('time').innerHTML = "The time is " + convertHourToName(h) + " o'clock and " + convertNumberToName(m) + " past";
+				setTimeout(startTime, 500);
+			}
+
+			function checkTime(i) {
+				if (i < 10) {
+					i = "0" + i;
+				}
+				return i;
+			}
+
+			function convertHourToName(num) {
+				if (num > 12) {
+					num -= 12;
+				}
+				return convertNumberToName(num);
+			}
+
+			function convertNumberToName(num) {
+				var lowNames = ["zero", "one", "two", "three",
+					"four", "five", "six", "seven", "eight", "nine",
+					"ten", "eleven", "twelve", "thirteen", "fourteen",
+					"fifteen", "sixteen", "seventeen",
+					"eighteen", "nineteen"
+				];
+				var tensNames = ["twenty", "thirty", "forty", "fifty",
+					"sixty", "seventy", "eighty", "ninety"
+				];
+				var tens, ones, result;
+				if (num < lowNames.length) {
+					result = lowNames[num];
+				} else {
+					tens = Math.floor(num / 10);
+					ones = num % 10;
+					if (tens <= 9) {
+						result = tensNames[tens - 2];
+						if (ones > 0) {
+							result += " " + lowNames[ones];
+						}
+					} else {
+						result = "unknown"
+					}
+				}
+				return result;
+			}
+
+			startTime();
+		</script>
 
 </body>
 
