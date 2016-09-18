@@ -21,15 +21,16 @@
 
 		<!-- Banner -->
 		<section id="banner" class="major">
-            <div class="inner">
-                <header class="major">
-                    <h1>Hi, I'm Mirror.</h1>
-                </header>
-                <hr class="hr-no-padding-top">
-                <!-- <div class="content" id="photo" style="width: 600px; height: 400px;">
+			<div class="inner">
+				<header class="major">
+					<h1>Hi, I'm Mirror.</h1>
+				</header>
+				<hr class="hr-no-padding-top">
+				<!-- <div class="content" id="photo" style="width: 600px; height: 400px;">
                     <p id="output" style="font-size: 20px;">We'd like to know a bit about you.
                    	</p>
                 </div> -->
+<<<<<<< HEAD
                 <div class="content row" style="font-size: 30px; padding-top: 20px;">
                     <div class="col-md-12" id="weather">
                         <p><i class="fa fa-spoon fa-fw" aria-hidden="true"></i>Nearby Food</p>
@@ -45,6 +46,23 @@
                 </div>
             </div>
         </section>
+=======
+				<div class="content row" style="font-size: 30px; padding-top: 20px;">
+					<div class="col-md-12" id="weather">
+						<p><i class="fa fa-spoon fa-fw" aria-hidden="true"></i>Nearby Food</p>
+					</div>
+					<ul style="list-style-type: none;" id="nearby-food-list">
+
+					</ul>
+				</div>
+				<br>
+				<hr class="hr-no-padding-top">
+				<div class="content row" style="font-size: 30px; padding-top: 20px;">
+
+				</div>
+			</div>
+		</section>
+>>>>>>> origin/master
 
 		<!-- Scripts -->
 		<script type="text/javascript" src="/assets/js/sha1.js"></script>
@@ -63,7 +81,10 @@
 		<script type='text/javascript' src="http://wolframhempel.github.io/photobooth-js/photobooth_min.js"></script>
 
 		<script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 			// $.ajax({
 			// 	url: "https://yelpserver.herokuapp.com/food",
 			//
@@ -80,7 +101,11 @@
 			// });
 
 			// XE code
+<<<<<<< HEAD
 			function hide(){
+=======
+			function hide() {
+>>>>>>> origin/master
 				$("#photo").hide();
 			}
 
@@ -110,7 +135,11 @@
 			});
 
 
+<<<<<<< HEAD
 			function displayFoodList(response){
+=======
+			function display(response) {
+>>>>>>> origin/master
 				for (var i = 0; i < 5; i++) {
 					$("#nearby-food-list").append("<li>" + response.businesses[i].name + "</li>");
 				}
@@ -128,23 +157,23 @@
 			// 		$("#gallery").append('<img src="' + dataUrl + '" >');
 			// 	});
 			// });
-			
+
 			// function dataURLtoBlob(dataUrl) {
 			// 	// Decode the dataURL
 			// 	var binary = atob(dataUrl.split(',')[1]);
-			
+
 			// 	// Create 8-bit unsigned array
 			// 	var array = [];
 			// 	for (var i = 0; i < binary.length; i++) {
 			// 		array.push(binary.charCodeAt(i));
 			// 	}
-			
+
 			// 	// Return our Blob object
 			// 	return new Blob([new Uint8Array(array)], {
 			// 		type: 'image/png'
 			// 	});
 			// }
-			
+
 			// function uploadImage(file) {
 			// 	var fd = new FormData();
 			// 	// Append our Canvas image file to the form data
