@@ -21,11 +21,30 @@
 
 		<!-- Banner -->
 		<section id="banner" class="major">
-			<div class="inner">
-				<div style="height:600px; weight:200px" id="photo">
-				</div>
-			</div>
-		</section>
+            <div class="inner">
+                <header class="major">
+                    <h1>Hi, I'm Mirror.</h1>
+                </header>
+                <hr class="hr-no-padding-top">
+                <!-- <div class="content" id="photo" style="width: 600px; height: 400px;">
+                    <p id="output" style="font-size: 20px;">We'd like to know a bit about you.
+                   	</p>
+                </div> -->
+                <div class="content row" style="font-size: 30px; padding-top: 20px;">
+                    <div class="col-md-12" id="weather">
+                        <p><i class="fa fa-spoon fa-fw" aria-hidden="true"></i>Nearby Food</p>
+                    </div>
+                    <ul style="list-style-type: none;" id="nearby-food-list">
+                        
+                    </ul>
+                </div>
+                <br>
+                <hr class="hr-no-padding-top">
+                <div class="content row" style="font-size: 30px; padding-top: 20px;">
+ 
+                </div>
+            </div>
+        </section>
 
 		<!-- Scripts -->
 		<script type="text/javascript" src="/assets/js/sha1.js"></script>
@@ -44,8 +63,8 @@
 		<script type='text/javascript' src="http://wolframhempel.github.io/photobooth-js/photobooth_min.js"></script>
 
 		<script>
-			// Yelp code
 
+<<<<<<< HEAD
 			// $.ajax({
 			// 	url: "https://yelpserver.herokuapp.com/food",
 			//
@@ -62,20 +81,46 @@
 			// });
 
 			// XE code
+=======
+			function hide(){
+				$("#photo").hide();
+			}
+
+>>>>>>> origin/master
 			$.ajax({
 				url: "https://yelpserver.herokuapp.com/stocks",
 
-				// The name of the callback parameter, as specified by the YQL service
-				jsonp: "callback",
-
 				// Tell jQuery we're expecting JSONP
-				dataType: "jsonp",
+				dataType: "json",
 
 				// Work with the response
 				success: function(response) {
-					console.log(response); // server response
+					response = JSON.parse(response);
+					console.log(response);
 				}
 			});
+
+			$.ajax({
+				url: "https://yelpserver.herokuapp.com/stocks",
+
+				// Tell jQuery we're expecting JSONP
+				dataType: "json",
+
+				// Work with the response
+				success: function(response) {
+					response = JSON.parse(response);
+					display(response);
+				}
+			});
+
+
+			function display(response){
+				for (var i = 0; i < 5; i++) {
+					$("#nearby-food-list").append("<li>" + response.businesses[i].name + "</li>");
+				}
+			}
+
+			// $('#food-place > p:eq(0)').append("hello");
 
 			// $(document).ready(function() {
 			// 	var file = null;
@@ -87,23 +132,23 @@
 			// 		$("#gallery").append('<img src="' + dataUrl + '" >');
 			// 	});
 			// });
-			//
+			
 			// function dataURLtoBlob(dataUrl) {
 			// 	// Decode the dataURL
 			// 	var binary = atob(dataUrl.split(',')[1]);
-			//
+			
 			// 	// Create 8-bit unsigned array
 			// 	var array = [];
 			// 	for (var i = 0; i < binary.length; i++) {
 			// 		array.push(binary.charCodeAt(i));
 			// 	}
-			//
+			
 			// 	// Return our Blob object
 			// 	return new Blob([new Uint8Array(array)], {
 			// 		type: 'image/png'
 			// 	});
 			// }
-			//
+			
 			// function uploadImage(file) {
 			// 	var fd = new FormData();
 			// 	// Append our Canvas image file to the form data
@@ -131,7 +176,7 @@
 </body>
 
 </html>
-ultObject = JSON.stringify(result); // alert(resultObject); // }); // }
+<!-- ultObject = JSON.stringify(result); // alert(resultObject); // }); // } -->
 </script>
 
 </body>
