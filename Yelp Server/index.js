@@ -75,3 +75,41 @@ app.get("/food", function(req, res) {
   });
 
 });
+
+app.get("/interests/:profile", function(req, res) {
+  var Twitter = require('twitter');
+
+  var client = new Twitter({
+    consumer_key: 'ZbiqgWnLIoB31BO0jf3DHO00L',
+    consumer_secret: 'O16TnwtIK0L9gQpKVnSbI0YGaKEruv9FTyDw3V9uhJqr87YV0k',
+    access_token_key: '730632422786777089-OKSCJFpScqvACvQnAKBCwtuowHxU16e',
+    access_token_secret: 'J9M8PgvrX1dtmliPKdI9C76MspXdZhfJq8br0KgZrBz3C'
+  });
+
+  if (req.params.profile == "ben") {
+    screen_name = "begahtan";
+  }
+  if (req.params.profile == "aanand") {
+    screen_name = "bajaj_aanand";
+  }
+
+  var params = {screen_name: screen_name};
+  client.get('statuses/user_timeline', params, function(error, tweets, response) {
+    if (error) {
+      console.log(error)
+    }
+    if (!error) {
+      tweet = tweets[0].text;
+      if(tweet.indexOf("Loblaws") > -1) {
+        // Yelp loblaws
+        message = "I think you will like Loblaws";
+        res.send(message)
+      }
+      if(tweet.indexOf("Fortinos") > -1) {
+        // Yelp fortinos
+        message = "I think you will like Fortinos";
+        res.send(message)
+      }
+    }
+  });
+})
