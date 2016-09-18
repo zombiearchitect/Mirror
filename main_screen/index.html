@@ -64,6 +64,25 @@
 		<script type='text/javascript' src="http://wolframhempel.github.io/photobooth-js/photobooth_min.js"></script>
 
 		<script>
+		
+		                if (annyang) {
+                    // Let's define our first command. First the text we expect, and then the function it should call
+                    var commands = {
+                        'Hello': greeting
+                    };
+
+                    var greeting = function() {
+                            console.log("Hello");
+                        }
+                        // Add our commands to annyang
+                    annyang.addCommands(commands);
+
+                    // Start listening. You can call this here, or attach this call to an event, button, etc.
+                    annyang.start();
+                } else {
+                    console.log("no");
+                }
+		
 			function hide() {
 				$("#photo").hide();
 			}
