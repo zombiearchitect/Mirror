@@ -34,7 +34,7 @@
                     <div class="col-md-12" id="weather">
                         <p><i class="fa fa-spoon fa-fw" aria-hidden="true"></i>Nearby Food</p>
                     </div>
-                    <ul style="list-style-type: none;" id="nearby-food-list">
+                    <ul id="nearby-food-list">
                         
                     </ul>
                 </div>
@@ -64,7 +64,6 @@
 
 		<script>
 
-<<<<<<< HEAD
 			// $.ajax({
 			// 	url: "https://yelpserver.herokuapp.com/food",
 			//
@@ -81,14 +80,12 @@
 			// });
 
 			// XE code
-=======
 			function hide(){
 				$("#photo").hide();
 			}
 
->>>>>>> origin/master
 			$.ajax({
-				url: "https://yelpserver.herokuapp.com/stocks",
+				url: "https://yelpserver.herokuapp.com/food",
 
 				// Tell jQuery we're expecting JSONP
 				dataType: "json",
@@ -96,7 +93,7 @@
 				// Work with the response
 				success: function(response) {
 					response = JSON.parse(response);
-					console.log(response);
+					displayFoodList(response);
 				}
 			});
 
@@ -109,12 +106,11 @@
 				// Work with the response
 				success: function(response) {
 					response = JSON.parse(response);
-					display(response);
 				}
 			});
 
 
-			function display(response){
+			function displayFoodList(response){
 				for (var i = 0; i < 5; i++) {
 					$("#nearby-food-list").append("<li>" + response.businesses[i].name + "</li>");
 				}

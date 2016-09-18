@@ -396,3 +396,7 @@
 #nearby-food-list{
 	list-style-type: none;
 }
+
+#nearby-food-list li{
+	margin-left: 10%;
+}
