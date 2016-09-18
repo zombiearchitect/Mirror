@@ -317,15 +317,6 @@
 			width: calc(100% + 0.5em);
 		}
 
-			header.major > :first-child:after {
-				content: '';
-				background-color: #ffffff;
-				display: block;
-				height: 2px;
-				margin: 0.325em 0 0.5em 0;
-				width: 100%;
-			}
-
 		header.major > p {
 			font-size: 0.7em;
 			font-weight: 600;
@@ -368,7 +359,7 @@
 		}
 
 		#wrapper > * > .inner {
-			padding: 4em 0 2em 0 ;
+			padding: 0 0 2em 0 ;
 			margin: 0 auto;
 			max-width: 65em;
 			width: calc(100% - 6em);
@@ -377,7 +368,7 @@
 			@media screen and (max-width: 736px) {
 
 				#wrapper > * > .inner {
-					padding: 3em 0 1em 0 ;
+					padding: 0 0 1em 0 ;
 					width: calc(100% - 3em);
 				}
 
@@ -394,4 +385,14 @@
 	#weather img{
 		color: #fff;
 	}
+	#weather{
+		display: inline-block;
+	}
 
+.hr-no-padding-top{
+	margin-top: -15px;
+}
+
+#nearby-food-list{
+	list-style-type: none;
+}
