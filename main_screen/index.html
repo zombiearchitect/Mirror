@@ -38,7 +38,7 @@
                     	</ul>
                     </div>
                     <div class="col-xs-6" style="font-size: 120%;">
-                    	<ul id="nearby-food-phoneNumbers">
+                    	<ul id="nearby-food-phoneNumbers" style="float: right;">
                         
                     	</ul>
                     </div>
@@ -99,7 +99,7 @@
 			for (var i = 0; i < 5; i++) {
 				$("#nearby-food-list").append("<li>" + response.businesses[i].name + "</li>");
 			}
-			for (var i = 0; i < 6; i++) {
+			for (var i = 0; i < 5; i++) {
 				$("#nearby-food-phoneNumbers").append("<li>" + "<i class='fa fa-phone' aria-hidden='true'></i>" + response.businesses[i].phone + "</li>");
 			}
 		}
