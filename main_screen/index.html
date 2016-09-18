@@ -34,10 +34,8 @@
                     <div class="col-md-12" id="weather">
                         <p><i class="fa fa-spoon fa-fw" aria-hidden="true"></i>Nearby Food</p>
                     </div>
-                    <ul style="list-style-type: none;">
-                        <li>
-
-                        </li>
+                    <ul style="list-style-type: none;" id="nearby-food-list">
+                        
                     </ul>
                 </div>
                 <br>
@@ -66,7 +64,6 @@
 
 		<script>
 
-		var data;
 			function hide(){
 				$("#photo").hide();
 			}
@@ -79,12 +76,29 @@
 
 				// Work with the response
 				success: function(response) {
-					data = JSON.parse(response);
+					response = JSON.parse(response);
+					console.log(response);
 				}
 			});
 
-			function display(){
+			$.ajax({
+				url: "https://yelpserver.herokuapp.com/stocks",
 
+				// Tell jQuery we're expecting JSONP
+				dataType: "json",
+
+				// Work with the response
+				success: function(response) {
+					response = JSON.parse(response);
+					display(response);
+				}
+			});
+
+
+			function display(response){
+				for (var i = 0; i < 5; i++) {
+					$("#nearby-food-list").append("<li>" + response.businesses[i].name + "</li>");
+				}
 			}
 
 			// $('#food-place > p:eq(0)').append("hello");
