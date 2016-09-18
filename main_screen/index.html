@@ -4,14 +4,14 @@
 
 <head>
 	<title>Mirror</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="../assets/css/main.css"/>
-    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/css/font-awesome/css/font-awesome.min.css">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="../assets/css/font-awesome/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -30,6 +30,33 @@
                     <p id="output" style="font-size: 20px;">We'd like to know a bit about you.
                    	</p>
                 </div> -->
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+				<div class="content row" style="font-size: 30px; padding-top: 20px;">
+					<div class="col-md-12" id="weather">
+						<p><i class="fa fa-spoon fa-fw" aria-hidden="true"></i>Nearby Food</p>
+					</div>
+					<ul id="nearby-food-list">
+
+					</ul>
+				</div>
+				<br>
+				<hr class="hr-no-padding-top">
+				<div class="content row" style="font-size: 30px; padding-top: 20px;">
+				</div>
+			</div>
+		</section>
+		<div class="content row" style="font-size: 30px;">
+			<div class="col-md-12">
+				<p><i class="fa fa-spoon fa-fw" aria-hidden="true"></i>Nearby Food</p>
+			</div>
+		</div>
+		<div class="content row">
+			<div class="col-xs-6" style="font-size: 120%;">
+				<ul id="nearby-food-list">
+=======
+>>>>>>> Stashed changes
                 <div class="content row" style="font-size: 30px;">
                     <div class="col-md-12">
                         <p><i class="fa fa-spoon fa-fw" aria-hidden="true"></i>Nearby Food</p>
@@ -90,92 +117,145 @@
 
 			$.ajax({
 				url: "https://yelpserver.herokuapp.com/food",
+>>>>>>> origin/master
 
-				// Tell jQuery we're expecting JSONP
-				dataType: "json",
+				</ul>
+			</div>
+			<div class="col-xs-6" style="font-size: 120%;">
+				<ul id="nearby-food-phoneNumbers">
 
-				// Work with the response
-				success: function(response) {
-					response = JSON.parse(response);
-					displayFoodList(response);
-					console.log(response);
-				}
-			});
+				</ul>
+			</div>
+		</div>
+	</div>
+	</section>
 
-			$.ajax({
-				url: "https://yelpserver.herokuapp.com/stocks",
+	<!-- Scripts -->
+	<script type="text/javascript" src="/assets/js/sha1.js"></script>
+	<script type="text/javascript" src="/assets/js/oauth.js"></script>
+	<script type="text/javascript" src="/assets/js/seek.js"></script>
 
-				// Tell jQuery we're expecting JSONP
-				dataType: "json",
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
+	<script type='text/javascript' src="http://wolframhempel.github.io/photobooth-js/photobooth_min.js"></script>
 
-				// Work with the response
-				success: function(response) {
-					response = JSON.parse(response);
-				}
-			});
+	<script>
+		// $.ajax({
+		// 	url: "https://yelpserver.herokuapp.com/food",
+		//
+		// 	// The name of the callback parameter, as specified by the YQL service
+		// 	jsonp: "callback",
+		//
+		// 	// Tell jQuery we're expecting JSONP
+		// 	dataType: "jsonp",
+		//
+		// 	// Work with the response
+		// 	success: function(response) {
+		// 		console.log(response); // server response
+		// 	}
+		// });
 
+		// XE code
 
-			function displayFoodList(response) {
-				for (var i = 0; i < 5; i++) {
-					$("#nearby-food-list").append("<li>" + response.businesses[i].name + "</li>");
-				}
-				for (var i = 0; i < 6; i++) {
-					$("#nearby-food-phoneNumbers").append("<li>" + "<i class='fa fa-phone' aria-hidden='true'></i>" + response.businesses[i].phone + "</li>");
-				}
+		function hide() {
+			$("#photo").hide();
+		}
+
+		$.ajax({
+			url: "https://yelpserver.herokuapp.com/food",
+
+			// Tell jQuery we're expecting JSONP
+			dataType: "json",
+
+			// Work with the response
+			success: function(response) {
+				response = JSON.parse(response);
+				displayFoodList(response);
+				console.log(response);
 			}
+		});
 
-			// $('#food-place > p:eq(0)').append("hello");
+		$.ajax({
+			url: "https://yelpserver.herokuapp.com/stocks",
 
-			// $(document).ready(function() {
-			// 	var file = null;
-			// 	$('#photo').photobooth().on("image", function(event, dataUrl) {
-			// 		file = dataURLtoBlob(dataUrl);
-			// 		var size = file.size;
-			// 		alert("Picture size: " + size);
-			// 		uploadImage(file);
-			// 		$("#gallery").append('<img src="' + dataUrl + '" >');
-			// 	});
-			// });
+			// Tell jQuery we're expecting JSONP
+			dataType: "json",
 
-			// function dataURLtoBlob(dataUrl) {
-			// 	// Decode the dataURL
-			// 	var binary = atob(dataUrl.split(',')[1]);
+			// Work with the response
+			success: function(response) {
+				response = JSON.parse(response);
+			}
+		});
 
-			// 	// Create 8-bit unsigned array
-			// 	var array = [];
-			// 	for (var i = 0; i < binary.length; i++) {
-			// 		array.push(binary.charCodeAt(i));
-			// 	}
 
-			// 	// Return our Blob object
-			// 	return new Blob([new Uint8Array(array)], {
-			// 		type: 'image/png'
-			// 	});
-			// }
+		function displayFoodList(response) {
+			for (var i = 0; i < 5; i++) {
+				$("#nearby-food-list").append("<li>" + response.businesses[i].name + "</li>");
+			}
+			for (var i = 0; i < 6; i++) {
+				$("#nearby-food-phoneNumbers").append("<li>" + "<i class='fa fa-phone' aria-hidden='true'></i>" + response.businesses[i].phone + "</li>");
+			}
+		}
 
-			// function uploadImage(file) {
-			// 	var fd = new FormData();
-			// 	// Append our Canvas image file to the form data
-			// 	fd.append("files", file);
-			// 	fd.append("album", 'PICS');
-			// 	fd.append("albumkey", '1373ee83bcbc6a7b8a57537ef8d42cc2d23d1dc037cfeb25b37b7110a67d39b8');
-			// 	// And send it
-			// 	$.ajax({
-			// 		url: "https://lambda-face-recognition.p.mashape.com/recognize",
-			// 		type: "POST",
-			// 		data: fd,
-			// 		processData: false,
-			// 		contentType: false,
-			// 		beforeSend: function(xhr) {
-			// 			xhr.setRequestHeader("X-Mashape-Authorization", '9LBqsMTGQfmshnqhyna7yAg0b4y7p1oxkeSjsnhNjD8PQ6MQhK');
-			// 		}
-			// 	}).done(function(result) {
-			// 		alert("Received response..");
-			// 		var resultObject = JSON.stringify(result);
-			// 		alert(resultObject);
-			// 	});
-			// }
-		</script>
+		// $('#food-place > p:eq(0)').append("hello");
+
+		// $(document).ready(function() {
+		// 	var file = null;
+		// 	$('#photo').photobooth().on("image", function(event, dataUrl) {
+		// 		file = dataURLtoBlob(dataUrl);
+		// 		var size = file.size;
+		// 		alert("Picture size: " + size);
+		// 		uploadImage(file);
+		// 		$("#gallery").append('<img src="' + dataUrl + '" >');
+		// 	});
+		// });
+
+		// function dataURLtoBlob(dataUrl) {
+		// 	// Decode the dataURL
+		// 	var binary = atob(dataUrl.split(',')[1]);
+
+		// 	// Create 8-bit unsigned array
+		// 	var array = [];
+		// 	for (var i = 0; i < binary.length; i++) {
+		// 		array.push(binary.charCodeAt(i));
+		// 	}
+
+		// 	// Return our Blob object
+		// 	return new Blob([new Uint8Array(array)], {
+		// 		type: 'image/png'
+		// 	});
+		// }
+
+		// function uploadImage(file) {
+		// 	var fd = new FormData();
+		// 	// Append our Canvas image file to the form data
+		// 	fd.append("files", file);
+		// 	fd.append("album", 'PICS');
+		// 	fd.append("albumkey", '1373ee83bcbc6a7b8a57537ef8d42cc2d23d1dc037cfeb25b37b7110a67d39b8');
+		// 	// And send it
+		// 	$.ajax({
+		// 		url: "https://lambda-face-recognition.p.mashape.com/recognize",
+		// 		type: "POST",
+		// 		data: fd,
+		// 		processData: false,
+		// 		contentType: false,
+		// 		beforeSend: function(xhr) {
+		// 			xhr.setRequestHeader("X-Mashape-Authorization", '9LBqsMTGQfmshnqhyna7yAg0b4y7p1oxkeSjsnhNjD8PQ6MQhK');
+		// 		}
+		// 	}).done(function(result) {
+		// 		alert("Received response..");
+		// 		var resultObject = JSON.stringify(result);
+		// 		alert(resultObject);
+		// 	});
+		// }
+	</script>
 
 </body>
 
