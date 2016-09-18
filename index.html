@@ -83,12 +83,6 @@
 
         <!-- annyang -->
         <script>
-        var elem = document.getElementById("body");
-
-    elem.onclick = function() {
-        req = elem.requestFullScreen || elem.webkitRequestFullScreen || elem.mozRequestFullScreen;
-        req.call(elem);
-    }
 
         $.ajax({
 				url: "https://yelpserver.herokuapp.com/stocks",
