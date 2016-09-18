@@ -5,13 +5,14 @@
 <head>
     <title>Mirror</title>
     <meta charset="utf-8" />
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/main.css"/>
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -22,104 +23,126 @@
         <!-- Banner -->
         <section id="banner" class="major">
             <div class="inner">
+            	<!-- Header -->
                 <header class="major">
                     <h1>Hi, I'm Mirror.</h1>
                 </header>
                 <hr class="hr-no-padding-top">
+
+                <!-- Description -->
                 <div class="content">
                     <p id="output" style="font-size: 20px;">We'd like to know a bit about you.
                     </p>
                 </div>
+
+                <!-- Time -->
                 <div class="content">
                     <p id="time" style="font-size: 40px;"></p>
                 </div>
+
+                <!-- Weather -->
                 <div class="content row" style="font-size: 30px; padding-top: 20px;">
+                    <div class="col-md-12">
+                        <p><i class="fa fa-cloud fa-fw" aria-hidden="true"></i>Weather</p>
+                    </div>
+                </div>
+                <div class="content row" style="font-size: 120%;">
                     <div class="col-md-12" id="weather">
-                        <i class="fa fa-cloud" aria-hidden="true"></i>
                         <p></p>
                     </div>
                 </div>
-                <br>
-                <hr class="hr-no-padding-top">
+                <!-- Stocks -->
                 <div class="content row" style="font-size: 30px; padding-top: 20px;">
-                    <ul style="list-style-type: none;">
-                        <li>
-
-                        </li>
-                    </ul>
+                    <div class="col-md-12">
+                        <p><i class="fa fa-dollar fa-fw" aria-hidden="true"></i>Exchange Rate</p>
+                    </div>
+                </div>
+                <div class="content row" style="font-size: 120%;">
+                    <div class="col-md-12" id="exchangeData">
+                        <p></p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
-        <script src="assets/js/jquery.scrolly.min.js"></script>
-        <script src="assets/js/jquery.scrollex.min.js"></script>
-        <script src="assets/js/skel.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-        <script src="assets/js/main.js"></script>
+        <script type="text/javascript" src="../assets/js/sha1.js"></script>
+		<script type="text/javascript" src="../assets/js/oauth.js"></script>
+		<script type="text/javascript" src="../assets/js/seek.js"></script>
 
-        <!-- Ajax API -->
-        <script type="text/javascript">
-            $(document).ready(function() {
-                //feed to parse
-                var feed = "http://rss.cnn.com/rss/cnn_topstories.rss?format=xml";
-
-                $.ajax(feed, {
-                    accepts: {
-                        xml: "application/rss+xml"
-                    },
-                    dataType: "xml",
-                    success: function(data) {
-                        //Credit: http://stackoverflow.com/questions/10943544/how-to-parse-an-rss-feed-using-javascript
-
-                        $(data).find("item").each(function() { // or "item" or whatever suits your feed
-                            var el = $(this);
-                            console.log("------------------------");
-                            console.log("title      : " + el.find("title").text());
-                            console.log("link       : " + el.find("link").text());
-                            console.log("description: " + el.find("description").text());
-                        });
-
-
-                    }
-                });
-
-            });
-        </script>
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+		<script src="../assets/js/jquery.scrolly.min.js"></script>
+		<script src="../assets/js/jquery.scrollex.min.js"></script>
+		<script src="../assets/js/skel.min.js"></script>
+		<script src="../assets/js/util.js"></script>
+		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+		<script src="../assets/js/main.js"></script>
+		<script type='text/javascript' src="http://wolframhempel.github.io/photobooth-js/photobooth_min.js"></script>
 
         <!-- annyang -->
         <script>
-            if (annyang) {
-                // Let's define our first command. First the text we expect, and then the function it should call
-                var commands = {
-                    'activate': function() {
-                        console.log("hello");
-                    }
-                };
+        var elem = document.getElementById("body");
 
-                // Add our commands to annyang
-                annyang.addCommands(commands);
+    elem.onclick = function() {
+        req = elem.requestFullScreen || elem.webkitRequestFullScreen || elem.mozRequestFullScreen;
+        req.call(elem);
+    }
 
-                // Start listening. You can call this here, or attach this call to an event, button, etc.
-                annyang.start();
+        $.ajax({
+				url: "https://yelpserver.herokuapp.com/stocks",
+
+				// Tell jQuery we're expecting JSONP
+				dataType: "json",
+
+				// Work with the response
+				success: function(response) {
+					response = JSON.parse(response);
+					console.log(response);
+					displayEXData(response);
+				}
+			});
+
+        function displayEXData(response){
+        	var quote = response.from[0].quotecurrency;
+        	var quoteTo = response.to;
+        	$('#exchangeData > p:eq(0)').append(quote + " to " + quoteTo + ": " + response.from[0].mid);
+        }
+        </script>
+
+        <script>
+        $(document).ready(function(){
+			if (annyang) {
+            // Let's define our first command. First the text we expect, and then the function it should call
+            var commands = {
+                'Hello': greeting
+            };
+
+            var greeting = function(){
+            	console.log("Hello");
             }
+            // Add our commands to annyang
+            annyang.addCommands(commands);
+
+            // Start listening. You can call this here, or attach this call to an event, button, etc.
+            annyang.start();
+        }
+        else{
+        	console.log("no");
+        }
+        });
         </script>
         <script>
             //Weather widget
             $(document).ready(function() {
+
                 $.simpleWeather({
-                    location: 'Waterloo, ON',
+                   location: 'Waterloo, ON',
                     woeid: '',
                     unit: 'c',
                     success: function(weather) {
-                        $("#weather > p:eq(0)").append(weather.currently + "<br>" + weather.city + "<br>" + weather.temp + "&#8451;");
-                        console.log(weather.currently);
-                        console.log(weather.city);
-                        console.log(weather.image);
+                        $("#weather > p:eq(0)").append(weather.currently + "<br>" + weather.city + "<br>" + weather.temp + "&#8451;")
 
                     },
                     error: function(error) {

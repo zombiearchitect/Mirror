@@ -3,15 +3,15 @@
 <html>
 
 <head>
-	<title>PRIMARY</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="assets/css/font-awesome/css/font-awesome.min.css">
+	<title>Mirror</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="../assets/css/main.css"/>
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/font-awesome/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -30,17 +30,22 @@
                     <p id="output" style="font-size: 20px;">We'd like to know a bit about you.
                    	</p>
                 </div> -->
-                <div class="content row" style="font-size: 30px; padding-top: 20px;">
-                    <div class="col-md-12" id="weather">
+                <div class="content row" style="font-size: 30px;">
+                    <div class="col-md-12">
                         <p><i class="fa fa-spoon fa-fw" aria-hidden="true"></i>Nearby Food</p>
                     </div>
-                    <ul id="nearby-food-list">
-                        
-                    </ul>
                 </div>
-                <br>
-                <hr class="hr-no-padding-top">
-                <div class="content row" style="font-size: 30px; padding-top: 20px;">
+                <div class="content row">
+                	<div class="col-xs-6" style="font-size: 120%;">
+                    	<ul id="nearby-food-list">
+                        
+                    	</ul>
+                    </div>
+                    <div class="col-xs-6" style="font-size: 120%;">
+                    	<ul id="nearby-food-phoneNumbers">
+                        
+                    	</ul>
+                    </div>
                 </div>
             </div>
         </section> 
@@ -94,6 +99,7 @@
 				success: function(response) {
 					response = JSON.parse(response);
 					displayFoodList(response);
+					console.log(response);
 				}
 			});
 
@@ -113,6 +119,9 @@
 			function displayFoodList(response){
 				for (var i = 0; i < 5; i++) {
 					$("#nearby-food-list").append("<li>" + response.businesses[i].name + "</li>");
+				}
+				for (var i = 0; i < 6; i++) {
+					$("#nearby-food-phoneNumbers").append("<li>" + "<i class='fa fa-phone' aria-hidden='true'></i>" + response.businesses[i].phone + "</li>");
 				}
 			}
 
