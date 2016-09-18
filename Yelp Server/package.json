@@ -12,6 +12,7 @@
   "dependencies": {
     "ejs": "2.4.1",
     "express": "4.13.3",
+    "request": "^2.74.0",
     "yelp": "latest"
   },
   "repository": {

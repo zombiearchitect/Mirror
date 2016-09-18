@@ -19,15 +19,56 @@ var yelp = new Yelp({
   token_secret: 'MThXzPvYrSfv1Gp3BC-svdVzxlk',
 });
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
+});
+
+app.all('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+ });
+
+app.get("/stocks", function(req, res) {
+  var http = require('http');
+
+  var username = 'hackthenorth064';
+  var password = 'Waterloo24999';
+  var url = 'https://xecdapi.xe.com/v1/convert_to.json/?to=USD&from=CAD&amount=1.00';
+
+
+  var request = require('request'),
+      auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
+
+  var output;
+
+  request(
+      {
+          url : url,
+          headers : {
+              "Authorization" : auth
+          }
+      },
+      function (error, response, body) {
+          // Do more stuff with 'body' here
+          output = body;
+          res.send(JSON.stringify(output))
+      }
+  );
+
 });
 
 
 app.get("/food", function(req, res) {
   yelp.search({ term: 'food', location: 'Waterloo University' })
   .then(function (data) {
-    res.jsonp(req.query.callback + '('+ JSON.stringify(data) + ');');
+    res.json(JSON.stringify(data));
   })
   .catch(function (err) {
     res.send(err);
